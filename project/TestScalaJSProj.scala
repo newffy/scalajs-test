@@ -23,7 +23,7 @@ trait TestSmartClientCrossProj {
     persistLauncher := true,
 
     libraryDependencies ++= Seq(
-        CommonSettings.jsDependencies.smartClient % "provided"
+//        CommonSettings.jsDependencies.smartClient % "provided"
       )
     //jsDependencies += "org.example" %% "js-thing" % "0.1" / "foo.js"
     ).jsConfigure(x => x.dependsOn(macroSub))

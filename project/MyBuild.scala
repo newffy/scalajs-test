@@ -5,7 +5,6 @@ import sbt.Keys._
 import spray.revolver.RevolverPlugin.Revolver
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
-import com.simplesys.mergewebapp.MergeWebappPlugin._
 
 
 //trait RootProject {
@@ -29,26 +28,15 @@ object MyBuild extends Build with
   )
 
   lazy val root = Project("core-libs-scalajs", file(".")) settings(
-    Revolver.settings ++ mergeWebappSettings ++ Seq(
+    Revolver.settings ++ Seq(
       //scalacOptions += "-Xlog-implicits",
       persistLauncher := true,
-      mergeMapping in MergeWebappConfig := Seq(
-        ("com.simplesys", "smartclient-js") -> Seq(
-          Seq("isomorphic") -> Some(Seq("webapp", "javascript", "isomorphic"))
-        )
-      ),
-      currentProjectGenerationDirPath in MergeWebappConfig <<= (sourceDirectory in Compile) {
-        _ / "webapp" / "javascript" / "generated"
-      },
-      currentProjectDevelopedDirPath in MergeWebappConfig <<= (sourceDirectory in Compile) {
-        _ / "webapp" / "javascript" / "developed"
-      },
       libraryDependencies ++= Seq(
         "com.typesafe.akka" %% "akka-actor" % CommonSettings.versions.akkaVersion,
         "com.typesafe.akka" %% "akka-slf4j" % CommonSettings.versions.akkaVersion,
         "io.spray"          %%  "spray-can"     % CommonSettings.versions.sprayVersion,
-        "io.spray"          %%  "spray-routing" % CommonSettings.versions.sprayVersion,
-        CommonSettings.jsDependencies.smartClient
+        "io.spray"          %%  "spray-routing" % CommonSettings.versions.sprayVersion//,
+//        CommonSettings.jsDependencies.smartClient
       ),
       mainClass in Revolver.reStart := Some("ru.simplesys.server.Boot")
 

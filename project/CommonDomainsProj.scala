@@ -1,7 +1,6 @@
 package ru.simplesys.build
 
 
-import com.simplesys.mergewebapp.MergeWebappPlugin._
 import org.scalajs.sbtplugin.ScalaJSPlugin.AutoImport._
 import sbt.Keys._
 import sbt._
@@ -17,9 +16,8 @@ trait CommonDomainsProj {
     jvmSettings().
     jsSettings(
       libraryDependencies ++= Seq(
-        CommonSettings.jsDependencies.smartClient % "provided"
+//        CommonSettings.jsDependencies.smartClient % "provided"
       )
-    //jsDependencies += "org.example" %% "js-thing" % "0.1" / "foo.js"
   ).jsConfigure(x => x.dependsOn(macroSub))
 
   // Needed, so sbt finds the projects

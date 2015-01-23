@@ -35,7 +35,7 @@ object CommonSettings {
   object jsDependencies {
     val scalaRx = "com.scalarx" %%%! "scalarx" % versions.scalaRxVersion
     val scalajsDOM = "org.scala-js" %%%! "scalajs-dom" % versions.scalajsDOMVersion
-    val smartClient = "com.simplesys" % "smartclient-js" % versions.smartclientVersion
+//    val smartClient = "com.simplesys" % "smartclient-js" % versions.smartclientVersion
   }
 
   object jvmDependencies {
